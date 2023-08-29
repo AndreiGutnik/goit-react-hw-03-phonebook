@@ -28,11 +28,12 @@ const FormError = ({ name }) => {
 
 const validationScheme = object().shape({
   name: string().min(5).max(50).required(),
-  number: string().length(13).required(),
-  // number: string().matches(
-  //   '+?d{1,4}?[ .-s]?(?d{1,3}?)?[ .-s]?d{1,4}[ .-s]?d{1,4}[ .-s]?d{1,9}',
-  //   'Error'
-  // ),
+  number: string()
+    .matches(
+      /^[+]?[(]?[0-9]{3}[)]?[-\s.]?[0-9]{3}[-\s.]?[0-9]{4,6}$/i,
+      'does not match the required format'
+    )
+    .required(),
 });
 
 export class ContactForm extends Component {
@@ -61,7 +62,6 @@ export class ContactForm extends Component {
                   name="name"
                   title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
                   placeholder="Name"
-                  required
                   id={this.labelNameId}
                 />
                 <IconUser />
@@ -77,7 +77,6 @@ export class ContactForm extends Component {
                   name="number"
                   title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
                   placeholder="Phone number"
-                  required
                   id={this.labelNumberId}
                 />
                 <IconPhone />
