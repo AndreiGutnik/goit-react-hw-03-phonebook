@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import { ImUser, ImPhone } from 'react-icons/im';
+import { Form, Field } from 'formik';
 
-export const Form = styled.form`
+export const FormStyle = styled(Form)`
   padding: 18px 12px;
   margin-bottom: 24px;
   display: flex;
@@ -17,7 +18,7 @@ export const InputWrap = styled.div`
   position: relative;
 `;
 
-export const Input = styled.input`
+export const Input = styled(Field)`
   width: 250px;
   padding: 4px 8px 4px 28px;
   border: 2px solid #000000;
@@ -54,4 +55,8 @@ export const Button = styled.button`
   &:focus {
     transform: scale(1.05);
   }
+`;
+
+export const FormText = styled.p`
+  color: red;
 `;
